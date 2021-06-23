@@ -125,25 +125,25 @@ if (isset($_POST['register'])) {
                             <form class="user" method="POST">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" name="name" placeholder="Full Name">
+                                        <input type="text" class="form-control form-control-user" name="name" placeholder="Full Name" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" name="username" placeholder=" Username">
+                                        <input type="text" class="form-control form-control-user" name="username" placeholder=" Username" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" name="email" placeholder="Email Address">
+                                    <input type="email" class="form-control form-control-user" name="email" placeholder="Email Address" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
 
-                                        <input type="text" class="form-control form-control-user" name="dob" placeholder="Date of Birth" onfocus="(this.type='date')">
+                                        <input type="text" class="form-control form-control-user" name="dob" placeholder="Date of Birth" onfocus="(this.type='date')" required>
                                     </div>
                                     <div class=" col-sm-6">
-                                        <input type="password" class="form-control form-control-user" name="password" placeholder="Password">
+                                        <input type="password" class="form-control form-control-user" name="password" placeholder="Password" required>
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-primary btn-user btn-block" name="register" value="Register Account">
+                                <input type="submit" class="btn btn-primary btn-user btn-block" name="register" value="Register Account" required>
                                 <!-- <a href="login.html" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </a> -->
@@ -151,6 +151,8 @@ if (isset($_POST['register'])) {
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="login.php">Already have an account? Login!</a>
+                                <a class="small"> || </a>
+                                <a class="small" href="index.php">Home</a>
                             </div>
                         </div>
                     </div>
@@ -160,5 +162,6 @@ if (isset($_POST['register'])) {
 
     </div>
 </body>
+<script src="https://kit.fontawesome.com/f5a8446199.js" crossorigin="anonymous"></script>
 
 </html>

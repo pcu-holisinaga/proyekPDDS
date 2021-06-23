@@ -30,7 +30,7 @@ require_once("auth.php")
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">My Appointment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="myAppointment.php">My Appointment</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
@@ -138,7 +138,9 @@ require_once("auth.php")
                         echo "<div class=\"col-sm-10\">";
                         echo "<div class=\"input-group\">";
                         echo "<input class=\"form-control\" id=\"bookingId\" name=\"bookingId\" type=\"text\" value=\"" . $dataSch2['id'] . "\" hidden />";
-                        echo "<input class=\"form-control\" id=\"drId\" name=\"drId\" type=\"text\" value=\"" . $dataSch2['drId'] . "\" hidden />";
+                        echo "<input class=\"form-control\" id=\"drId\" name=\"drId\" type=\"text\" value=\"" . $dataSch2['drId'] . "\" hidden />"; //DR ID
+                        echo "<input class=\"form-control\" id=\"drname\" name=\"drname\" type=\"text\" value=\"" . $dataSch2['drname'] . "\" hidden />"; //DR NAME
+
                         echo "<input class=\"form-control\" id=\"date\" name=\"date\" type=\"text\" value=\"" . $dataSch2['date'] . "\" hidden />";
                         echo "<input class=\"form-control\" id=\"startTime\" name=\"startTime\" type=\"text\" value=\"" . $dataSch2['startTime'] . "\" hidden />";
                         echo "<input class=\"form-control\" id=\"endTime\" name=\"endTime\" type=\"text\" value=\"" . $dataSch2['endTime'] . "\" hidden />";

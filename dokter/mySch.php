@@ -301,8 +301,8 @@
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">1</th>
-                                                        <td>Henry Paleed</td>
-                                                        <td>hnpalit@uc.ac.id</td>
+                                                        <td>sb</td>
+                                                        <td>d@uc.ac.id</td>
                                                         <td>Mon, 1 June 2021</td>
                                                         <td>00.00 WIB</td>
                                                         <td>01.00 WIB</td>
@@ -315,7 +315,7 @@
                                                     <tr>
                                                         <th scope="row">1</th>
                                                         <td>Seo Lie Lian</td>
-                                                        <td>lilian@dongseo.ac.kr</td>
+                                                        <td>afaf@afaf.ac.kr</td>
                                                         <td>Mon, 1 June 2021</td>
                                                         <td>02.00 WIB</td>
                                                         <td>03.00 WIB</td>

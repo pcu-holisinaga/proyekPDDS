@@ -110,7 +110,7 @@ if (isset($_POST['login'])) {
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block"> <img src="./img/user.png" alt="" height="450" width="450"> </div>
+                            <div class="col-lg-6 d-none d-lg-block"> <img src="./img/user.png" alt="" height="480" width="450"> </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -132,6 +132,8 @@ if (isset($_POST['login'])) {
                                         <a class="small" href="./dokter/login.php">Login sebagai Dokter</a>
                                         <br>
                                         <a class="small" href="./admin/login.php">Login sebagai Admin</a>
+                                        <br>
+                                        <a class="small" href="./index.php">Home</a>
                                     </div>
                                 </div>
                             </div>

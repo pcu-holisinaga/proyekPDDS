@@ -7,6 +7,7 @@ $waktu = date("Y-m-d") . ' ' . date("H:i");
 $insertOneResult = $collection->insertOne([
     'bookingId' => $_POST['bookingId'],
     'drId' => $_POST['drId'],
+    'drname' => $_POST['drname'], //mantap
     'patName' =>  $_SESSION["user"]["name"],
     'patEmail' =>  $_SESSION["user"]["email"],
     'date' => $_POST['date'],
