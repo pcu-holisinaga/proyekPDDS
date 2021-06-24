@@ -3,7 +3,6 @@
 require_once("../config.php");
 
 if (isset($_POST['register'])) {
-
     //Filter Data yg masuk
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
@@ -13,8 +12,6 @@ if (isset($_POST['register'])) {
     $spesialis = $_POST['spesialis'];
     $sql = "INSERT INTO doctor (name, spesialis, username, email, password) VALUES (:name, :spesialis, :username, :email, :password)";
     $stmt = $db->prepare($sql);
-
-
     $params = array(
         ":name" => $name,
         ":spesialis" => $spesialis,
@@ -22,10 +19,8 @@ if (isset($_POST['register'])) {
         ":email" => $email,
         ":password" => $password
     );
-
     //save to DB
     $saved = $stmt->execute($params);
-
     if ($saved) header("Location: login.php");
 }
 ?>

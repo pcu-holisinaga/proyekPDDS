@@ -55,14 +55,82 @@ require_once("auth.php")
         <!-- Content Row-->
 
         <?php
+        $s_spesialis = "";
+        $s_keyword = "";
+        if (isset($_POST['search'])) {
+            $s_spesialis = $_POST['s_spesialis'];
+            $s_keyword = $_POST['s_keyword'];
+        }
+        ?>
+        <form method="POST" action="">
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <h4>Cari Dokter Spesialis</h4>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <select name="s_spesialis" id="s_spesialis" class="form-control">
+                            <option selected disabled>Filter Dokter Spesialis</option>
+                            <option value="">Show All</option>
+                            <option value="Sp.A" <?php if ($s_spesialis == "Sp.A") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Anak - Sp.A</option>
+                            <option value="Sp.JP" <?php if ($s_spesialis == "Sp.JP") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Jantung & Pembuluh Darah - Sp.JP</option>
+                            <option value="Sp.OG" <?php if ($s_spesialis == "Sp.OG") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Obstetri & Ginekologi - Sp.OG</option>
+                            <option value="Sp.KK" <?php if ($s_spesialis == "Sp.KK") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Kulit & Kelamin - Sp.KK</option>
+                            <option value="Sp.M" <?php if ($s_spesialis == "Sp.M") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Mata - Sp.M</option>
+                            <option value="Sp.OT" <?php if ($s_spesialis == "Sp.OT") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Orthopaedi & Traumatologi - Sp.OT</option>
+                            <option value="Sp.PD" <?php if ($s_spesialis == "Sp.PD") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Penyakit Dalam - Sp.PD</option>
+                            <option value="Psikiater" <?php if ($s_spesialis == "Psikiater") {
+                                                            echo "selected";
+                                                        } ?>>Psikiater</option>
+                            <option value="Sp.N" <?php if ($s_spesialis == "Sp.N") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Syaraf - Sp.N</option>
+                            <option value="Sp.THT" <?php if ($s_spesialis == "Sp.THT") {
+                                                        echo "selected";
+                                                    } ?>>Spesialis Telinga Hidung Tenggorokan - Sp.THT</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search" name="s_keyword" id="s_keyword" class="form-control" value="<?php echo $s_keyword; ?>">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <button id="search" name="search" class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </form>
 
+        <?php
+        $search_spesialis = '%' . $s_spesialis . '%';
+        $search_keyword = '%' . $s_keyword . '%';
         $con = mysqli_connect("localhost", "root", "", "belajar");
-        $query = mysqli_query($con, "SELECT * FROM doctor ");
+        $query = mysqli_query($con, "SELECT * FROM doctor WHERE spesialis LIKE ? AND name like ? ORDER BY id ASC");
+        $query2 = "SELECT * FROM doctor WHERE spesialis LIKE ? AND name like ? ORDER BY spesialis ASC";
+        $cari = $con->prepare($query2);
+        $cari->bind_param('ss', $search_spesialis, $search_keyword);
+        $cari->execute();
+        $result = $cari->get_result();
         ?>
 
         <div class="row gx-4 gx-lg-5">
             <?php
-            while ($data = mysqli_fetch_array($query)) {
+            while ($data = mysqli_fetch_array($result)) {
 
             ?>
                 <div class="col-md-4 mb-5">
@@ -88,8 +156,8 @@ require_once("auth.php")
                             <div class="modal-body">
                                 <?php
                                 $conSch = mysqli_connect("localhost", "root", "", "belajar");
-                                $querySch = mysqli_query($conSch, "SELECT * FROM drschedule WHERE status='0'");
-                                $querySch2 = mysqli_query($conSch, "SELECT * FROM drschedule ");
+                                $querySch = mysqli_query($conSch, "SELECT * FROM drschedule WHERE status='0' ORDER BY date asc, startTime asc");
+                                $querySch2 = mysqli_query($conSch, "SELECT * FROM drschedule ORDER BY date asc, startTime asc");
                                 $count = 1;
                                 while ($dataSch = mysqli_fetch_array($querySch)) {
                                     if ($data["id"] == $dataSch["drId"]) {
@@ -117,7 +185,7 @@ require_once("auth.php")
 
                 <?php
                 $conSch2 = mysqli_connect("localhost", "root", "", "belajar");
-                $querySch2 = mysqli_query($conSch2, "SELECT * FROM drschedule");
+                $querySch2 = mysqli_query($conSch2, "SELECT * FROM drschedule ORDER BY date asc");
 
                 $count2 = 1;
 

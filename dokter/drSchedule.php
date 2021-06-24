@@ -310,7 +310,7 @@ date_default_timezone_set('Hongkong');
                                         <?php
                                         $myId = $_SESSION["dokter"]["id"];
                                         $link = mysqli_connect("localhost", "root", "", "belajar");
-                                        $result = mysqli_query($link, "SELECT * FROM drschedule WHERE drId='$myId' AND status='0'");
+                                        $result = mysqli_query($link, "SELECT * FROM drschedule WHERE drId='$myId' AND status='0' ORDER BY date asc, startTime asc");
                                         ?>
                                         <thead>
                                             <tr>

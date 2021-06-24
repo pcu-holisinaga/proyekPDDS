@@ -49,7 +49,6 @@
         </div>
         <!-- Content Row-->
 
-        <!-- PHP SEARCH -->
         <?php
         $s_spesialis = "";
         $s_keyword = "";
@@ -58,9 +57,6 @@
             $s_keyword = $_POST['s_keyword'];
         }
         ?>
-        <!-- PHP SEARCH -->
-
-        <!-- FORM SEARCH BAR -->
         <form method="POST" action="">
             <div class="row mb-3">
                 <div class="col-sm-12">
@@ -114,25 +110,27 @@
                 </div>
             </div>
         </form>
-        <!-- FORM SEARCH BAR -->
+
         <?php
+
         $search_spesialis = '%' . $s_spesialis . '%';
         $search_keyword = '%' . $s_keyword . '%';
+
+
         $con = mysqli_connect("localhost", "root", "", "belajar");
         $query = mysqli_query($con, "SELECT * FROM doctor WHERE spesialis LIKE ? AND name like ? ORDER BY id ASC");
-        $query2 = "SELECT * FROM doctor WHERE spesialis LIKE ? AND name like ? ORDER BY id ASC";
+        $query2 = "SELECT * FROM doctor WHERE spesialis LIKE ? AND name like ? ORDER BY spesialis ASC";
         $cari = $con->prepare($query2);
         $cari->bind_param('ss', $search_spesialis, $search_keyword);
         $cari->execute();
         $result = $cari->get_result();
-        ?>
 
+
+        ?>
         <div class="row gx-4 gx-lg-5">
             <?php
             while ($data = mysqli_fetch_array($result)) {
-
             ?>
-
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
                         <div class="card-body">
@@ -147,6 +145,22 @@
             <?php } ?>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container px-4 px-lg-5">
@@ -163,6 +177,8 @@
             alert("Silakan Login Untuk Melihat Jadwal Dokter");
         }
     </script>
+
+
 </body>
 
 </html>
